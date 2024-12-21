@@ -24,6 +24,7 @@ typedef enum exe_version {
 	VER_DEMO4_10,
 	VER_DEMO4_32,
 	VER_DEMO4_35,
+	VER_TRN2K3,
 	VER_FD101_00,
 	VER_FD102_00,
 	VER_FD103_00,
@@ -42,6 +43,5 @@ typedef enum exe_version {
 typedef struct SRB2Executable {
 	FILE * handle;
 	uint32 size;
-	uint8 checksum[16];
 	exe_version version;
 } SRB2Executable;
