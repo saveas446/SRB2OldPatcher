@@ -1,5 +1,5 @@
 /*
- * Zunawe's MD5 implementation in C, originally found at https://github.com/Zunawe/md5-c.
+ * Slightly modified version of Zunawe's MD5 implementation in C, originally found at https://github.com/Zunawe/md5-c.
  * Derived from the RSA Data Security, Inc. MD5 Message-Digest Algorithm
  * and modified slightly to be functionally identical but condensed into control structures.
  */
@@ -190,19 +190,6 @@ void md5Step(uint32_t *buffer, uint32_t *input){
     buffer[1] += BB;
     buffer[2] += CC;
     buffer[3] += DD;
-}
-
-/*
- * Functions that run the algorithm on the provided input and put the digest into result.
- * result should be able to store 16 bytes.
- */
-void md5String(char *input, uint8_t *result){
-    MD5Context ctx;
-    md5Init(&ctx);
-    md5Update(&ctx, (uint8_t *)input, strlen(input));
-    md5Finalize(&ctx);
-
-    memcpy(result, ctx.digest, 16);
 }
 
 void md5File(FILE *file, uint8_t *result){
