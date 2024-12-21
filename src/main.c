@@ -36,11 +36,10 @@ int main(int argc, char** argv) {
 	int i = 2;
 	while (i < argc) {
 		if (!strcmp(argv[i], "-w")) {
-			printf("Set window width to %s\n", argv[i+1]);
 			patch_wwidth(&exe, atoi(argv[i+1]));
 			i++;
 		} else if (!strcmp(argv[i], "-h")) {
-			printf("Set window height to %s\n", argv[i+1]);
+			patch_wheight(&exe, atoi(argv[i+1]));
 			i++;			
 		} else if (!strcmp(argv[i], "-i")) {
 			printf("Set IWAD checksums to %s\n", argv[i+1]);
@@ -52,7 +51,7 @@ int main(int argc, char** argv) {
 			printf("Set window title to %s\n", argv[i+1]);
 			i++;
 		} else if (!strcmp(argv[i], "-p")) {
-			printf("Set text shown when game is paused to %s\n", argv[i+1]);
+			patch_pausedtxt(&exe, argv[i+1]);
 			i++;
 		} else if (!strcmp(argv[i], "-?")) {
 			printf(help_text);
