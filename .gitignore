@@ -1,34 +1,34 @@
-# Prerequisites
+# prerequisites
 *.d
 
-# Object files
+# object files
 *.o
 *.ko
 *.obj
 *.elf
 
-# Linker output
+# linker output
 *.ilk
 *.map
 *.exp
 
-# Precompiled Headers
+# precompiled Headers
 *.gch
 *.pch
 
-# Libraries
+# libraries
 *.lib
 *.a
 *.la
 *.lo
 
-# Shared objects (inc. Windows DLLs)
+# shared objects (inc. windows dlls)
 *.dll
 *.so
 *.so.*
 *.dylib
 
-# Executables
+# executables
 *.exe
 *.out
 *.app
@@ -36,13 +36,13 @@
 *.x86_64
 *.hex
 
-# Debug files
+# debug files
 *.dSYM/
 *.su
 *.idb
 *.pdb
 
-# Kernel Module Compile Results
+# kernel module compile results
 *.mod*
 *.cmd
 .tmp_versions/
@@ -50,3 +50,7 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# all files in the bin and obj folders (it's just object files, copies of srb2 for testing on, and the build results in there)
+bin/*
+obj/*
