@@ -6,12 +6,16 @@
 #include "tables.h"
 #include "types.h"
 
+bool file_not_found;
 
 int init_exe(SRB2Executable* exe, char* filename) {
 	exe->handle = fopen(filename, "rb+");
 	if (exe->handle == NULL) {
+		file_not_found = TRUE;
 		return EXIT_FAILURE;
 	}
+	
+	file_not_found = FALSE;
 	
 	bool version_found = FALSE;
 	
