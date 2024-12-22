@@ -2,7 +2,7 @@
 CC = gcc
 
 # Compiler flags
-CFLAGS = -O2
+CFLAGS = -g -O2
 
 # Linker flags
 LDFLAGS =

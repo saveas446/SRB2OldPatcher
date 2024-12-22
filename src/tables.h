@@ -74,5 +74,5 @@ uint32 ver_addresses [NUM_VERSIONS] [2] = {
 	{0x0C6558, 0x0C6562}, 
 	{0x0E6040, 0x0E6057}, 
 	{0x14AD27, 0x14AD43}, // debuggggg aug 2008
-	{0x0E830A, 0x0E6327}, // sep 2008
+	{0x0D466D, 0x0D4689}, // sep 2008
 };

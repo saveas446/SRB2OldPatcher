@@ -47,7 +47,11 @@ int main(int argc, char** argv) {
 			printf("Set IWAD checksums to %s\n", argv[i+1]);
 			i++;			
 		} else if (!strcmp(argv[i], "-d") || !strcmp(argv[i], "--drm")) {
-			printf("Set DRM to %s\n", argv[i+1]);
+			if (!strcmp(argv[i+1], "on")) {
+				enable_drm(&exe);
+			} else if (!strcmp(argv[i+1], "off")) {
+				disable_drm(&exe);
+			}
 			i++;			
 		} else if (!strcmp(argv[i], "-t") || !strcmp(argv[i], "--window-title")) {
 			patch_wtitle(&exe, argv[i+1]);
