@@ -67,23 +67,19 @@ int patch_byte(uint8 value, uint32 address, FILE *file) {
     return EXIT_SUCCESS;
 }
 
-int replace_string_at_offset(char* string, uint32 address, FILE *file) {
+int memcpy_to_file(uint32 address, void *src, size_t n, FILE *file) {
 
-    size_t data_length = strlen(string);
-
-    if (file == NULL) {
-        perror("Error opening file");
+    // Seek to the specified offset in the file
+    if (fseek(file, address, SEEK_SET) != 0) {
+        perror("Error seeking file");
         return EXIT_FAILURE;
     }
-    
-    fseek(file, address, SEEK_SET);
-	
-    if (fwrite(string, sizeof(char), data_length, file) != data_length) {
+
+    // Write the data from memory to the file
+    if (fwrite(src, sizeof(char), n, file) != n) {
         perror("Error writing to file");
         return EXIT_FAILURE;
     }
-
-    char null_terminator = '\0';
-    fwrite(&null_terminator, sizeof(char), 1, file);
+	
     return EXIT_SUCCESS;
 }

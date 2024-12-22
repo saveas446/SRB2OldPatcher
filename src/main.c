@@ -7,17 +7,15 @@
 #include "types.h"
 
 
-static const char *help_text = 
-"\nPatches pre-2.0 versions of SRB2.\n\n"
-"Usage: SRB2Patcher filename [options]\n"
-"Options:\n\n"
-"-w: Changes window width to any value between 1 and 9999.\n"
-"-h: Changes window height to any value between 1 and 9999.\n"
-"-i: Enables or disables checking the IWAD files for modification. Final Demo 1.01 and up only.\n"
-"-d: Enables or disables the DRM functions. August 2008 or September 2008 1.1 betas only.\n"
-"-t: Changes the window title.\n"
-"-p: Changes the text shown when not focused on the window in windowed mode.\n"
-"-?: Displays this text.\n";
+const char* help_text = "Usage: program [options]\n"
+                        "Options:\n"
+                        "  -w <width>          Set window width to any value between 1 and 9999\n"
+                        "  -h <height>         Set window height to any value between 1 and 9999\n"
+                        "  -i <on/off>         Enable or disable IWAD checksums (Final Demo 1.01 and up only)\n"
+                        "  -d <drm>            Enable or disable DRM (August 2008 or September 2008 1.1 betas only) \n"
+                        "  -t <title>          Set window title\n"
+                        "  -p <text>           Set paused text\n"
+                        "  -?                  Display this help message\n";
 
 int main(int argc, char** argv) {
 	
@@ -48,7 +46,7 @@ int main(int argc, char** argv) {
 			printf("Set DRM to %s\n", argv[i+1]);
 			i++;			
 		} else if (!strcmp(argv[i], "-t")) {
-			printf("Set window title to %s\n", argv[i+1]);
+			patch_wtitle(&exe, argv[i+1]);
 			i++;
 		} else if (!strcmp(argv[i], "-p")) {
 			patch_pausedtxt(&exe, argv[i+1]);
