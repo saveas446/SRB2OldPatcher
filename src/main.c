@@ -21,7 +21,7 @@ int main(int argc, char** argv) {
 	SRB2Executable exe;
 	
 	if (argc < 2) {
-		printf(help_text);
+		puts(help_text);
 		return EXIT_SUCCESS;		
 	} 
 	
@@ -30,7 +30,7 @@ int main(int argc, char** argv) {
 			perror("init_exe failed");
 			return EXIT_FAILURE;
 		} else {
-			printf(help_text);
+			puts(help_text);
 			return EXIT_SUCCESS;	
 		}
 	}
@@ -44,13 +44,25 @@ int main(int argc, char** argv) {
 			patch_wheight(&exe, atoi(argv[i+1]));
 			i++;			
 		} else if (!strcmp(argv[i], "-i") || !strcmp(argv[i], "--iwad-checking")) {
-			printf("Set IWAD checksums to %s\n", argv[i+1]);
+			if (exe.version > VER_FD108_00 && exe.version < VER_AUG2008) {
+				if (!strcmp(argv[i+1], "on")) {
+					enable_iwad_chk(&exe);
+				} else if (!strcmp(argv[i+1], "off")) {
+					disable_iwad_chk(&exe);
+				}				
+			} else {
+				puts("Version has no IWAD checking implemented\n");
+			}				
 			i++;			
 		} else if (!strcmp(argv[i], "-d") || !strcmp(argv[i], "--drm")) {
-			if (!strcmp(argv[i+1], "on")) {
-				enable_drm(&exe);
-			} else if (!strcmp(argv[i+1], "off")) {
-				disable_drm(&exe);
+			if (exe.version == VER_AUG2008 || exe.version == VER_SEP2008) {
+				if (!strcmp(argv[i+1], "on")) {
+					enable_drm(&exe);
+				} else if (!strcmp(argv[i+1], "off")) {
+					disable_drm(&exe);
+				}
+			} else {
+				puts("Version has no DRM implemented\n");
 			}
 			i++;			
 		} else if (!strcmp(argv[i], "-t") || !strcmp(argv[i], "--window-title")) {
@@ -60,7 +72,7 @@ int main(int argc, char** argv) {
 			patch_pausedtxt(&exe, argv[i+1]);
 			i++;
 		} else if (!strcmp(argv[i], "-?") || !strcmp(argv[i], "--help")) {
-			printf(help_text);
+			puts(help_text);
 		} else {
 			printf("Unknown option: %s", argv[i]);
 			return EXIT_SUCCESS;

@@ -7,3 +7,6 @@ int patch_wtitle(SRB2Executable* exe, char* string);
 
 void enable_drm(SRB2Executable* exe);
 void disable_drm(SRB2Executable* exe);
+
+void enable_iwad_chk(SRB2Executable* exe);
+void disable_iwad_chk(SRB2Executable* exe);
