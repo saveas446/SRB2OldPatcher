@@ -80,6 +80,8 @@ int main(int argc, char** argv) {
 		i++;
 	}
 	
+	puts("Done!");
+	
 	fclose(exe.handle);
 	
 	return EXIT_SUCCESS;

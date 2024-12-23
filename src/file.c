@@ -18,6 +18,16 @@ int read_file_segment(FILE* file, uint32 start_address, uint32 end_address, char
     return EXIT_SUCCESS;
 }
 
+int read_byte(uint32 address, FILE *file, uint8 *out) {	
+	if (fseek(file, address, SEEK_SET) != 0) {
+        perror("Error seeking file");
+        return EXIT_FAILURE;
+    }
+
+    fread(out, sizeof(uint8), 1, file);
+    return EXIT_SUCCESS;
+}
+
 int patch_uint32(uint32 value, uint32 address, FILE *file) {
     if (file == NULL) {
         perror("Error opening file");
