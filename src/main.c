@@ -6,7 +6,7 @@
 #include "patch.h"
 #include "types.h"
 
-const char* help_text = "Usage: srb2patcher [file] [options]\n"
+const char* help_text = "Usage: srb2oldpatcher [file] [options]\n"
                         "Options:\n"
                         "  -w, --window-width <width>          Set window width to any value between 1 and 9999\n"
                         "  -h, --window-height <height>         Set window height to any value between 1 and 9999\n"

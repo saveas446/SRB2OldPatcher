@@ -24,9 +24,9 @@ OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
 
 ifeq ($(OS),Windows_NT)
 # Output executable
-TARGET = $(BIN_DIR)/SRB2Patcher.exe
+TARGET = $(BIN_DIR)/SRB2OldPatcher.exe
 else
-TARGET = $(BIN_DIR)/SRB2Patcher
+TARGET = $(BIN_DIR)/SRB2OldPatcher
 endif
 # Build target
 $(TARGET): $(OBJS)
