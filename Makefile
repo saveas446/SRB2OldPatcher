@@ -2,10 +2,10 @@
 CC = gcc
 
 # Compiler flags
-CFLAGS = -g -O2
+CFLAGS = -O2
 
 # Linker flags
-LDFLAGS =
+LDFLAGS = 
 
 # Source directory
 SRC_DIR = src
@@ -22,9 +22,12 @@ SRCS = $(wildcard $(SRC_DIR)/*.c)
 # Object files
 OBJS = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRCS))
 
+ifeq ($(OS),Windows_NT)
 # Output executable
 TARGET = $(BIN_DIR)/SRB2Patcher.exe
-
+else
+TARGET = $(BIN_DIR)/SRB2Patcher
+endif
 # Build target
 $(TARGET): $(OBJS)
 	@mkdir -p $(BIN_DIR)
