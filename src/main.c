@@ -6,15 +6,15 @@
 #include "patch.h"
 #include "types.h"
 
-const char* help_text = "Usage: srb2oldpatcher [file] [options]\n"
+const char* help_text = "Usage: srb2oldpatcher [file] [options]\n\n"
                         "Options:\n"
-                        "  -w, --window-width <width>          Set window width to any value between 1 and 9999\n"
+                        "  -w, --window-width <width>           Set window width to any value between 1 and 9999\n"
                         "  -h, --window-height <height>         Set window height to any value between 1 and 9999\n"
                         "  -i, --iwad-checking <on/off>         Enable or disable IWAD checking (Final Demo 1.01 and up only)\n"
-                        "  -d, --drm <on/off>            Enable or disable DRM (August 2008 or September 2008 1.1 betas only) \n"
-                        "  -t, --window-title <title>          Set window title\n"
-                        "  -p, --pause-text <text>           Set paused text\n"
-                        "  -?, --help                  Display this help message\n";
+                        "  -d, --drm <on/off>                   Enable or disable DRM (August 2008 or September 2008 1.1 betas only) \n"
+                        "  -t, --window-title <title>           Set window title\n"
+                        "  -p, --pause-text <text>              Set paused text\n"
+                        "  -?, --help                           Display this help message\n";
 
 int main(int argc, char** argv) {
 	
