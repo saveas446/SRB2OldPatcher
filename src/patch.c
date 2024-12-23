@@ -4,6 +4,7 @@
 
 #include "file.h"
 #include "types.h"
+#include "patch.h"
 
 
 int patch_wwidth(SRB2Executable* exe, int32 width) {
@@ -12,10 +13,10 @@ int patch_wwidth(SRB2Executable* exe, int32 width) {
 	uint8 temp;
 	
 	// holy optimization
-	patch_uint32(width, wwidth_table[exe.version][0], exe->handle);
-	patch_uint32(width, wwidth_table[exe.version][1], exe->handle);
-	patch_uint32(width, wwidth_table[exe.version][2], exe->handle);	
-	patch_uint32(width, wwidth_table[exe.version][3], exe->handle);
+	patch_uint32(width, wwidth_table[exe->version][0], exe->handle);
+	patch_uint32(width, wwidth_table[exe->version][1], exe->handle);
+	patch_uint32(width, wwidth_table[exe->version][2], exe->handle);	
+	patch_uint32(width, wwidth_table[exe->version][3], exe->handle);
 	
 	// vmode_t has fallen
 	// billions must write custom asm routines
@@ -74,10 +75,11 @@ int patch_wheight(SRB2Executable* exe, int32 height) {
 	uint8 temp;
 		
 	// holy optimization 2
-	patch_uint32(height, wheight_table[exe.version][0], exe->handle);
-	patch_uint32(height, wheight_table[exe.version][1], exe->handle);
-	patch_uint32(height, wheight_table[exe.version][2], exe->handle);	
-	patch_uint32(height, wheight_table[exe.version][3], exe->handle);
+	patch_uint32(height, wheight_table[exe->version][0], exe->handle);
+	patch_uint32(height, wheight_table[exe->version][1], exe->handle);
+	patch_uint32(height, wheight_table[exe->version][2], exe->handle);	
+	patch_uint32(height, wheight_table[exe->version][3], exe->handle);
+	patch_uint32(height, wheight_table[exe->version][4], exe->handle);
 	
 	if (exe->version == VER_SRB2FUN) {
 		read_byte(0x4A58, exe->handle, &temp);
