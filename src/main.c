@@ -30,7 +30,7 @@ int main(int argc, char** argv) {
 			perror("init_exe failed");
 			return EXIT_FAILURE;
 		} else {
-			puts(help_text);
+			printf("File \"%s\" not found\n", argv[1]);
 			return EXIT_SUCCESS;	
 		}
 	}
@@ -38,10 +38,26 @@ int main(int argc, char** argv) {
 	int i = 2;
 	while (i < argc) {
 		if (!strcmp(argv[i], "-w") || !strcmp(argv[i], "--window-width")) {
-			patch_wwidth(&exe, atoi(argv[i+1]));
+			if (exe.version != VER_AUG2008) {
+				patch_wwidth(&exe, atoi(argv[i+1]));
+			} else {
+				puts("Window width patch not implemented for the Aug 2008 build\n");
+				// I can't test the Aug 2008 build. I just get a "Couldn't set keyboard coop level"
+				// error every time I try to start it.
+				// If you're reading this and have gotten the build to work,
+				// Please feel free to make a pull request!
+			}
 			i++;
 		} else if (!strcmp(argv[i], "-h") || !strcmp(argv[i], "--window-height")) {
-			patch_wheight(&exe, atoi(argv[i+1]));
+			if (exe.version != VER_AUG2008) {
+				patch_wheight(&exe, atoi(argv[i+1]));
+			} else {
+				puts("Window height patch not implemented for the Aug 2008 build\n");
+				// I can't test the Aug 2008 build. I just get a "Couldn't set keyboard coop level"
+				// error every time I try to start it.
+				// If you're reading this and have gotten the build to work,
+				// Please feel free to make a pull request!
+			}
 			i++;			
 		} else if (!strcmp(argv[i], "-i") || !strcmp(argv[i], "--iwad-checking")) {
 			if (exe.version > VER_FD108_00 && exe.version < VER_AUG2008) {
