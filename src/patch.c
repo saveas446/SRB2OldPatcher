@@ -38,7 +38,7 @@ uint32 wheight_table [NUM_VERSIONS] [5] = {
 	{0xCC44, 0xCC4F, 0xCD13, 0xCD1E, 0x5771C},	
 	{0xCC44, 0xCC4F, 0xCD13, 0xCD1E, 0x5B71C},	// xmas 96
 	{0x7D32, 0x7D3D, 0x7E13, 0x7E1E, 0x70234},	// demo 1
-	{0x7D42, 0x7D4D, 0x7E23, 0x7E2E, 0x79273},	// demo 2
+	{0x7D42, 0x7D4D, 0x7E23, 0x7E2E, 0x7927C},	// demo 2
 	{0x7D52, 0x7D5D, 0x7E33, 0x7E3E, 0x7725C},  // demo 3
 	{0x7D52, 0x7D5D, 0x7E33, 0x7E3E, 0x7725C},  // demo 4
 	{0x7D52, 0x7D5D, 0x7E33, 0x7E3E, 0x7725C},  // demo 4.1
@@ -114,7 +114,8 @@ int patch_wwidth(SRB2Executable* exe, int32 width) {
 	
 	uint8 temp = 0;
 	
-	while (temp < 3) {
+	while (temp < 4) {
+		printf("Patching value 0x%X at address 0x%X\n", width, wwidth_table[exe->version][temp]);
 		patch_uint32(width, wwidth_table[exe->version][temp], exe->handle);
 		temp++;
 	}
@@ -175,7 +176,8 @@ int patch_wheight(SRB2Executable* exe, int32 height) {
 	uint8 temp;
 		
 
-	while (temp < 4) {
+	while (temp < 5) {
+		printf("Patching value 0x%X at address 0x%X\n", height, wheight_table[exe->version][temp]);
 		patch_uint32(height, wheight_table[exe->version][temp], exe->handle);
 		temp++;
 	}
