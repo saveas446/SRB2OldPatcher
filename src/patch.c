@@ -283,9 +283,12 @@ int patch_wtitle(SRB2Executable* exe, char* string) {
 		case VER_SEP2008:
 			str_length = 0x23;
 			break;	
+		default:
+			perror("Unknown version!\n");
+			return EXIT_FAILURE;
 	}
 	
-	char wtitle[str_length];
+	char* wtitle = malloc(str_length);
 	
 	if (strlen(string) > str_length) {
 		perror("String too long");
