@@ -9,6 +9,11 @@
 // lesson learned: do not declare variables in header files
 // that are used in multiple places
 
+
+
+// These tables contain the addresses of the values to patch to change various things
+
+// WINDOW WIDTH
 uint32 wwidth_table [NUM_VERSIONS] [4] = {
 	{0xCC54, 0xCD23, 0x57718, 0x57720},	
 	{0xCC54, 0xCD23, 0x5B718, 0x5B720},	
@@ -34,6 +39,7 @@ uint32 wwidth_table [NUM_VERSIONS] [4] = {
 	{0xBE9A, 0xC223, 0xF43A0, 0xF43A8}
 };
 
+// WINDOW HEIGHT
 uint32 wheight_table [NUM_VERSIONS] [5] = {
 	{0xCC44, 0xCC4F, 0xCD13, 0xCD1E, 0x5771C},	
 	{0xCC44, 0xCC4F, 0xCD13, 0xCD1E, 0x5B71C},	// xmas 96
@@ -59,6 +65,7 @@ uint32 wheight_table [NUM_VERSIONS] [5] = {
 	{0xBE8A, 0xBE95, 0xC213, 0xC21E, 0xF43A4},
 };
 
+// PAUSED TEXT
 uint32 pausedtxt_table [NUM_VERSIONS] = {
 0x056570,
 0x05A570,
@@ -84,6 +91,7 @@ uint32 pausedtxt_table [NUM_VERSIONS] = {
 0x0D55B0
 };
 
+// WINDOW TITLE
 uint32 wtitle_table [NUM_VERSIONS] = {
 0x056618,
 0x05A618,
@@ -369,7 +377,7 @@ void enable_iwad_chk(SRB2Executable* exe) {
 		patch_byte(0x74, 0xA862F, exe->handle);
 		break;
 		default:
-		puts("How?\n");
+		puts("Unknown version while enabling IWAD checking\n");
 		break;
 	}
 	return;
@@ -394,7 +402,7 @@ void disable_iwad_chk(SRB2Executable* exe) {
 		patch_byte(0xEB, 0xA862F, exe->handle);
 		break;
 		default:
-		puts("How?\n");
+		puts("Unknown version while disabling IWAD checking\n");
 		break;
 	}
 	return;
